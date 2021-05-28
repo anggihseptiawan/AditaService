@@ -2,4 +2,28 @@
 
 <h5 class="font-weight-bold">Post Events Page</h5>
 
+<div class="row mb-5">
+    <div class="col-md-6">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input class="form-control" type="file" id="image" name="image">
+            </div>
+            <div class="mb-3">
+              <label for="schedule" class="form-label">Schedule</label>
+              <input type="date" class="form-control" id="schedule" name="schedule">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary d-block w-100">Submit</button>
+          </form>
+    </div>
+</div>
+
 <%- include('../../templates/footer'); %>
