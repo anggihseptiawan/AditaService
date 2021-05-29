@@ -1,21 +1,22 @@
 <%- include('../../templates/header'); %>
 
-<h5 class="font-weight-bold">Post Career Page</h5>
+<h5 class="font-weight-bold">Edit Career Page</h5>
 
 <div class="row mb-5">
     <div class="col-md-6">
-        <form method="POST" action="/career/postcareer">
+        <form method="POST" action="/career/updatecareer">
+            <input type="hidden" name="id_career" value="<%- id_career %>">
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title" required>
+              <input type="text" class="form-control" id="title" name="title" value="<%- career['title'] %>" required>
             </div>
             <div class="mb-3">
               <label for="qualification" class="form-label">Qualification</label>
-              <input type="text" class="form-control" id="qualification" name="qualification" required>
+              <input type="text" class="form-control" id="qualification" name="qualification" value="<%- career['qualification'] %>" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" value="<%- career['description'] %>" required><%- career['description'] %></textarea>
             </div>
             <div class="mb-3">
               <label for="duedate" class="form-label">Due Date</label>

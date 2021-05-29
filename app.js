@@ -6,16 +6,9 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const homeRouter = require("./routes/cms/home");
-
 const eventsRouter = require("./routes/cms/events");
-const postEventRouter = require("./routes/cms/events/PostEvent");
-
 const newsRouter = require("./routes/cms/news");
-const postNewsRouter = require("./routes/cms/news/PostNews");
-
 const careerRouter = require("./routes/cms/career");
-const postCareerRouter = require("./routes/cms/career/PostCareer");
-
 const aboutRouter = require("./routes/cms/about");
 
 const app = express();
@@ -32,12 +25,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", homeRouter);
 app.use("/events", eventsRouter);
-app.use("/postevent", postEventRouter);
 app.use("/news", newsRouter);
-app.use("/postnews", postNewsRouter);
 app.use("/about", aboutRouter);
 app.use("/career", careerRouter);
-app.use("/postcareer", postCareerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
