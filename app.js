@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const cloudinary = require("cloudinary").v2;
 
 const homeRouter = require("./routes/cms/home");
 const eventsRouter = require("./routes/cms/events");
@@ -12,6 +13,13 @@ const careerRouter = require("./routes/cms/career");
 const aboutRouter = require("./routes/cms/about");
 
 const app = express();
+
+// init cloudinary
+cloudinary.config({
+	cloud_name: process.env.AIRTABLE_CLOUD_NAME,
+	api_key: process.env.AIRTABLE_API_KEY,
+	api_secret: process.env.AIRTABLE_API_SECRET,
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
