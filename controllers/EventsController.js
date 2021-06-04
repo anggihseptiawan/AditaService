@@ -46,8 +46,7 @@ exports.updateEvent = async (req, res) => {
 				id_event,
 			},
 		});
-		const events = await Events.findAll();
-		res.render("pages/events", { title: "Events", events });
+		res.redirect("/events");
 	} catch (error) {
 		console.log(error);
 	}
@@ -60,8 +59,7 @@ exports.addEvent = async (req, res) => {
 	const data = { title, image, schedule, content };
 	try {
 		const add = await Events.create(data);
-		const events = await Events.findAll();
-		res.render("pages/events", { title: "Events", events });
+		res.redirect("/events");
 	} catch (error) {
 		console.log(error);
 		res.sendStatus(400);
@@ -76,8 +74,7 @@ exports.deleteEvent = async (req, res) => {
 				id_event,
 			},
 		});
-		const events = await Events.findAll();
-		res.render("pages/events", { title: "Event", events });
+		res.redirect("/events");
 	} catch (error) {
 		console.log(error);
 	}

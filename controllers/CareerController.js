@@ -23,8 +23,7 @@ exports.postCareer = async (req, res) => {
 	};
 	try {
 		await Career.create(data);
-		const careers = await Career.findAll();
-		res.render("pages/career", { title: "Career", careers });
+		res.redirect("/career");
 	} catch (error) {
 		console.log(error);
 	}
@@ -59,8 +58,7 @@ exports.updateCareer = async (req, res) => {
 				id_career,
 			},
 		});
-		const careers = await Career.findAll();
-		res.render("pages/career", { title: "Career", careers });
+		res.redirect("/career");
 	} catch (error) {
 		console.log(error);
 	}
@@ -74,8 +72,7 @@ exports.deleteCareer = async (req, res) => {
 				id_career,
 			},
 		});
-		const careers = await Career.findAll();
-		res.render("pages/career", { title: "Career", careers });
+		res.redirect("/career");
 	} catch (error) {
 		console.log(error);
 	}

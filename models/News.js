@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-	const Events = sequelize.define(
-		"Events",
+	const News = sequelize.define(
+		"News",
 		{
-			id_event: {
+			id_news: {
 				type: DataTypes.INTEGER,
 				primaryKey: true,
 				autoIncrement: true,
@@ -16,28 +16,24 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
-			schedule: {
-				type: DataTypes.DATE,
-				allowNull: false,
-			},
 			content: {
 				type: DataTypes.TEXT,
 				allowNull: false,
 			},
 			createdAt: {
 				type: DataTypes.DATE,
-				allowNull: false,
+				allowNull: true,
 			},
 			updatedAt: {
 				type: DataTypes.DATE,
-				allowNull: false,
+				allowNull: true,
 			},
 		},
 		{
-			tableName: "events",
+			tableName: "news",
 			timestamps: true,
 		}
 	);
 
-	return Events;
+	return News;
 };

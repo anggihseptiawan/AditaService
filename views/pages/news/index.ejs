@@ -3,7 +3,7 @@
 <div class="row mx-0 mb-4 justify-content-between align-items-center">
     <h5 class="font-weight-bold">News Page</h5>
     <div>
-        <a class="btn btn-primary px-3" href="/postnews">Post News</a>
+        <a class="btn btn-primary px-3" href="/news/postnews">Post News</a>
     </div>
 </div>
 
@@ -18,48 +18,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Ottoman</td>
-        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptates vitae accusamus enim, magni eum consequuntur nam animi modi porro at dolores unde ipsa facilis suscipit culpa sequi esse dicta?</td>
-        <td>
-            <a class="btn btn-primary mr-1 mb-1" href="#">
-                <i class="fas fa-pen"></i>
-            </a>
-            <a class="btn btn-danger mr-1 mb-1" href="#">
-                <i class="fas fa-trash"></i>
-            </a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel incidunt culpa eius id quisquam itaque obcaecati similique sapiente quasi rerum.</td>
-        <td>
-            <a class="btn btn-primary mr-1 mb-1" href="#">
-                <i class="fas fa-pen"></i>
-            </a>
-            <a class="btn btn-danger mr-1 mb-1" href="#">
-                <i class="fas fa-trash"></i>
-            </a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, iure incidunt possimus nisi molestias magni dolore obcaecati nihil ea earum tempore sequi reiciendis exercitationem itaque architecto eligendi. Id, voluptatem fugiat asperiores possimus doloremque officiis aut illo natus provident totam corrupti?</td>
-        <td>
-            <a class="btn btn-primary mr-1 mb-1" href="#">
-                <i class="fas fa-pen"></i>
-            </a>
-            <a class="btn btn-danger mr-1 mb-1" href="#">
-                <i class="fas fa-trash"></i>
-            </a>
-        </td>
-      </tr>
+      <% news.forEach((item, idx) => { %>
+        <tr>
+          <th scope="row"><%= idx + 1 %> </th>
+          <td><%= item["title"] %> </td>
+          <td><img src="<%= item['image'] %>" alt="<%= item["title"] %> " style="width: 100px"></td>
+          <td><%= item["content"] %> <td>
+              <a class="btn btn-primary mr-1 mb-1" href="news/edit/<%= item['id_news'] %>">
+                  <i class="fas fa-pen"></i>
+              </a>
+              <a class="btn btn-danger mr-1 mb-1" href="news/delete/<%= item['id_news'] %> ">
+                  <i class="fas fa-trash"></i>
+              </a>
+          </td>
+        </tr>
+      <% }) %>
     </tbody>
   </table>
 

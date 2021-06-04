@@ -12,6 +12,11 @@ const newsRouter = require("./routes/cms/news");
 const careerRouter = require("./routes/cms/career");
 const aboutRouter = require("./routes/cms/about");
 
+// api route
+const apiCareerRouter = require("./routes/api/career");
+const apiNewsRouter = require("./routes/api/news");
+const apiEventsRouter = require("./routes/api/events");
+
 const app = express();
 
 // init cloudinary
@@ -36,6 +41,10 @@ app.use("/events", eventsRouter);
 app.use("/news", newsRouter);
 app.use("/about", aboutRouter);
 app.use("/career", careerRouter);
+
+app.use("/api/career", apiCareerRouter);
+app.use("/api/events", apiEventsRouter);
+app.use("/api/news", apiNewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,12 +1,16 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const { upload } = require("../../middleware/uploadfile");
+const NewsController = require("../../controllers/NewsController");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-	res.render("pages/news", { title: "News" });
-});
-router.get("/postnews", function (req, res) {
-	res.render("pages/news/postnews", { title: "News" });
-});
+router.get("/", NewsController.renderPage);
+
+router.get("/postnews", NewsController.postNewsPage);
+router.post("/addnews", upload, NewsController.addNews);
+
+router.get("/edit/:id", NewsController.editNewsPage);
+router.post("/updatenews", upload, NewsController.updateNews);
+
+router.get("/delete/:id", NewsController.deleteNews);
 
 module.exports = router;
