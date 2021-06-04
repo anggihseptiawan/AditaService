@@ -1,21 +1,22 @@
 <%- include('../../templates/header'); %>
 
-<h5 class="font-weight-bold">Post News Page</h5>
+<h5 class="font-weight-bold">Edit News Page</h5>
 
 <div class="row mb-5">
     <div class="col-md-6">
-        <form method="POST" action="/news/addnews" enctype="multipart/form-data">
+        <form method="POST" action="/news/updatenews" enctype="multipart/form-data">
+            <input type="hidden" name="id_news" value="<%= id_news %> ">
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title" required>
+              <input type="text" class="form-control" id="title" name="title" value="<%= news["title"] %> ">
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input class="form-control" type="file" id="image" name="image" required>
+                <input class="form-control" type="file" id="image" name="image" value="<%= news["image"] %> ">
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                <textarea class="form-control" id="content" name="content" rows="3"><%= news["content"] %> </textarea>
             </div>
             <button type="submit" class="btn btn-primary d-block w-100">Submit</button>
           </form>
