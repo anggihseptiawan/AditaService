@@ -5,6 +5,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cloudinary = require("cloudinary").v2;
+const cors = require("cors");
 
 const homeRouter = require("./routes/cms/home");
 const eventsRouter = require("./routes/cms/events");
@@ -42,9 +43,10 @@ app.use("/news", newsRouter);
 app.use("/about", aboutRouter);
 app.use("/career", careerRouter);
 
-app.use("/api/career", apiCareerRouter);
-app.use("/api/events", apiEventsRouter);
-app.use("/api/news", apiNewsRouter);
+// app.use(cors);
+app.use("/api/career", cors(), apiCareerRouter);
+app.use("/api/events", cors(), apiEventsRouter);
+app.use("/api/news", cors(), apiNewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
