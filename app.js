@@ -12,6 +12,7 @@ const eventsRouter = require("./routes/cms/events");
 const newsRouter = require("./routes/cms/news");
 const careerRouter = require("./routes/cms/career");
 const aboutRouter = require("./routes/cms/about");
+const authRouter = require("./routes/cms/auth");
 
 // api route
 const apiCareerRouter = require("./routes/api/career");
@@ -42,6 +43,7 @@ app.use("/events", eventsRouter);
 app.use("/news", newsRouter);
 app.use("/about", aboutRouter);
 app.use("/career", careerRouter);
+app.use("/auth", authRouter);
 
 // app.use(cors);
 app.use("/api/career", cors(), apiCareerRouter);
