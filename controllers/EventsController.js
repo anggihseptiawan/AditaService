@@ -34,9 +34,12 @@ exports.editEventsPage = async (req, res) => {
 };
 
 exports.updateEvent = async (req, res) => {
+	const { path } = req.file;
+	const image = path.replace(/public/g, "");
 	const { id_event, title, schedule, content } = req.body;
 	const data = {
 		title,
+		image,
 		schedule,
 		content,
 	};

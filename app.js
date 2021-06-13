@@ -18,8 +18,17 @@ const authRouter = require("./routes/cms/auth");
 const apiCareerRouter = require("./routes/api/career");
 const apiNewsRouter = require("./routes/api/news");
 const apiEventsRouter = require("./routes/api/events");
+// const islogin = require("./middleware/islogin");
 
 const app = express();
+app.use(cookieParser());
+
+// middleware
+// app.use(function (req, res, next) {
+// 	if (req.cookies.login) {
+// 		next();
+// 	}
+// });
 
 // init cloudinary
 cloudinary.config({

@@ -46,7 +46,9 @@ exports.editNewsPage = async (req, res) => {
 };
 
 exports.updateNews = async (req, res) => {
-	const { id_news, title, image, content } = req.body;
+	const { path } = req.file;
+	const image = path.replace(/public/g, "");
+	const { id_news, title, content } = req.body;
 	const data = { title, image, content };
 	try {
 		const response = News.update(data, {
