@@ -4,7 +4,14 @@ const saltRounds = 10;
 
 exports.renderPage = async (req, res) => {
 	try {
-		res.render("pages/auth/login", { title: "Login" });
+		console.log(req.cookies.login);
+		if (req.cookies.login == "true") {
+			console.log("hallooo..");
+			res.redirect("/admin/home");
+		} else {
+			console.log("haiiii..");
+			res.render("pages/auth/login", { title: "Login" });
+		}
 	} catch (error) {
 		console.log(error);
 	}
@@ -28,7 +35,7 @@ exports.handleRegister = async (req, res) => {
 				password: hash,
 			};
 			const response = await Auth.create(data);
-			res.redirect("/auth");
+			res.redirect("/admin/auth");
 		});
 	} catch (error) {
 		console.log(error);
@@ -54,7 +61,7 @@ exports.handleLogin = async (req, res) => {
 					expires: new Date(Date.now() + 7200000),
 					httpOnly: true,
 				});
-				res.redirect("/");
+				res.redirect("/admin/home");
 			} else {
 				alert("password salah..");
 			}

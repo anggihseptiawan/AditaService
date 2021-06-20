@@ -3,7 +3,7 @@
 <div class="row mx-0 mb-4 justify-content-between align-items-center">
     <h5 class="font-weight-bold">Career Page</h5>
     <div>
-        <a class="btn btn-primary px-3" href="/career/postcareer">Post Career</a>
+        <a class="btn btn-primary px-3" href="/admin/career/postcareer">Post Career</a>
     </div>
 </div>
 
@@ -27,10 +27,10 @@
         <td><%- career["description"] %></td>
         <td><%- new Date(career["duedate"]).toLocaleDateString() %></td>
         <td>
-            <a class="btn btn-primary mr-1 mb-1" href="/career/edit/<%- career['id_career'] %>">
+            <a class="btn btn-primary mr-1 mb-1" href="/admin/career/edit/<%- career['id_career'] %>">
                 <i class="fas fa-pen"></i>
             </a>
-            <a class="btn btn-danger mr-1 mb-1" href="/career/delete/<%- career['id_career'] %>">
+            <a class="btn btn-danger mr-1 mb-1" href="/admin/career/delete/<%- career['id_career'] %>">
                 <i class="fas fa-trash"></i>
             </a>
         </td>

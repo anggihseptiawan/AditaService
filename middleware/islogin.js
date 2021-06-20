@@ -1,6 +1,9 @@
-exports.isLogin = () => {
-	const login = document.cookie.split(";").some((item) => {
-		return item.includes("login=true") ? "yess" : "noo";
-	});
-	return login;
+const isLogin = (req, res, next) => {
+	if (req.cookies.login != "true") {
+		res.redirect("/admin/auth");
+	} else {
+		next();
+	}
 };
+
+module.exports = isLogin;
