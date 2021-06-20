@@ -49,7 +49,7 @@ exports.updateEvent = async (req, res) => {
 				id_event,
 			},
 		});
-		res.redirect("/events");
+		res.redirect("/admin/events");
 	} catch (error) {
 		console.log(error);
 	}
@@ -62,7 +62,7 @@ exports.addEvent = async (req, res) => {
 	const data = { title, image, schedule, content };
 	try {
 		const add = await Events.create(data);
-		res.redirect("/events");
+		res.redirect("/admin/events");
 	} catch (error) {
 		console.log(error);
 		res.sendStatus(400);
@@ -77,7 +77,7 @@ exports.deleteEvent = async (req, res) => {
 				id_event,
 			},
 		});
-		res.redirect("/events");
+		res.redirect("/admin/events");
 	} catch (error) {
 		console.log(error);
 	}

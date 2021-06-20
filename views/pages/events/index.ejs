@@ -3,7 +3,7 @@
 <div class="row mx-0 mb-4 justify-content-between align-items-center">
     <h5 class="font-weight-bold">Events Page</h5>
     <div>
-        <a class="btn btn-primary px-3" href="/events/postevent">Post Events</a>
+        <a class="btn btn-primary px-3" href="/admin/events/postevent">Post Events</a>
     </div>
 </div>
 
@@ -27,10 +27,10 @@
           <td><%= new Date(event["schedule"]).toLocaleDateString() %> </td>
           <td><%= event["content"] %> </td>
           <td>
-              <a class="btn btn-primary mr-1 mb-1" href="/events/edit/<%= event['id_event'] %> ">
+              <a class="btn btn-primary mr-1 mb-1" href="/admin/events/edit/<%= event['id_event'] %> ">
                   <i class="fas fa-pen"></i>
               </a>
-              <a class="btn btn-danger mr-1 mb-1" href="/events/delete/<%= event['id_event'] %> ">
+              <a class="btn btn-danger mr-1 mb-1" href="/admin/events/delete/<%= event['id_event'] %> ">
                   <i class="fas fa-trash"></i>
               </a>
           </td>

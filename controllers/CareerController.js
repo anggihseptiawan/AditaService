@@ -23,7 +23,7 @@ exports.postCareer = async (req, res) => {
 	};
 	try {
 		await Career.create(data);
-		res.redirect("/career");
+		res.redirect("/admin/career");
 	} catch (error) {
 		console.log(error);
 	}
@@ -58,7 +58,7 @@ exports.updateCareer = async (req, res) => {
 				id_career,
 			},
 		});
-		res.redirect("/career");
+		res.redirect("/admin/career");
 	} catch (error) {
 		console.log(error);
 	}
@@ -72,7 +72,7 @@ exports.deleteCareer = async (req, res) => {
 				id_career,
 			},
 		});
-		res.redirect("/career");
+		res.redirect("/admin/career");
 	} catch (error) {
 		console.log(error);
 	}

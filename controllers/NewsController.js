@@ -24,7 +24,7 @@ exports.addNews = async (req, res) => {
 	const data = { title, image, content };
 	try {
 		const response = await News.create(data);
-		res.redirect("/news");
+		res.redirect("/admin/news");
 	} catch (error) {
 		console.log(error);
 	}
@@ -56,7 +56,7 @@ exports.updateNews = async (req, res) => {
 				id_news,
 			},
 		});
-		res.redirect("/news");
+		res.redirect("/admin/news");
 	} catch (error) {
 		console.log(error);
 	}
@@ -70,7 +70,7 @@ exports.deleteNews = async (req, res) => {
 				id_news,
 			},
 		});
-		res.redirect("/news");
+		res.redirect("/admin/news");
 	} catch (error) {
 		console.log(error);
 	}

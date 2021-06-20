@@ -4,55 +4,39 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const cloudinary = require("cloudinary").v2;
 const cors = require("cors");
+const session = require("express-session");
 
-const homeRouter = require("./routes/cms/home");
-const eventsRouter = require("./routes/cms/events");
-const newsRouter = require("./routes/cms/news");
-const careerRouter = require("./routes/cms/career");
-const aboutRouter = require("./routes/cms/about");
-const authRouter = require("./routes/cms/auth");
+const adminRouter = require("./routes/admin");
+const indexRouter = require("./routes/index");
 
 // api route
 const apiCareerRouter = require("./routes/api/career");
 const apiNewsRouter = require("./routes/api/news");
 const apiEventsRouter = require("./routes/api/events");
-// const islogin = require("./middleware/islogin");
 
 const app = express();
 app.use(cookieParser());
 
-// middleware
-// app.use(function (req, res, next) {
-// 	if (req.cookies.login) {
-// 		next();
-// 	}
-// });
-
-// init cloudinary
-cloudinary.config({
-	cloud_name: process.env.AIRTABLE_CLOUD_NAME,
-	api_key: process.env.AIRTABLE_API_KEY,
-	api_secret: process.env.AIRTABLE_API_SECRET,
-});
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
+app.use(
+	session({
+		secret: "keyboard cat",
+		resave: false,
+		saveUninitialized: true,
+		cookie: { secure: true, maxAge: 120000 },
+	})
+);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", homeRouter);
-app.use("/events", eventsRouter);
-app.use("/news", newsRouter);
-app.use("/about", aboutRouter);
-app.use("/career", careerRouter);
-app.use("/auth", authRouter);
+app.use("/", indexRouter);
+app.use("/admin", adminRouter);
 
 // app.use(cors);
 app.use("/api/career", cors(), apiCareerRouter);
