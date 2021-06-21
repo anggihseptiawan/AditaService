@@ -1,5 +1,4 @@
 const { Events } = require("../models");
-const cloudinary = require("cloudinary").v2;
 
 exports.renderPage = async (req, res) => {
 	try {

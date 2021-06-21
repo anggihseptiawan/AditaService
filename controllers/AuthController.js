@@ -4,12 +4,9 @@ const saltRounds = 10;
 
 exports.renderPage = async (req, res) => {
 	try {
-		console.log(req.cookies.login);
 		if (req.cookies.login == "true") {
-			console.log("hallooo..");
 			res.redirect("/admin/home");
 		} else {
-			console.log("haiiii..");
 			res.render("pages/auth/login", { title: "Login" });
 		}
 	} catch (error) {
