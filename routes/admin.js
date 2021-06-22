@@ -25,7 +25,8 @@ router.get("/home", async function (req, res, next) {
 		const career = await Career.count();
 		const news = await News.count();
 		const data = { events, career, news };
-		res.render("pages/home", { title: "Home", data });
+		const user = req.cookies.email;
+		res.render("pages/home", { title: "Home", data, user });
 	} catch (error) {
 		console.log(error);
 	}
@@ -33,7 +34,8 @@ router.get("/home", async function (req, res, next) {
 
 // ABOUT PAGE
 router.get("/about", function (req, res, next) {
-	res.render("pages/about", { title: "About" });
+	const user = req.cookies.email;
+	res.render("pages/about", { title: "About", user });
 });
 
 // CAREERS PAGE

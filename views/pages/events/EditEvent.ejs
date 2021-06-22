@@ -8,11 +8,11 @@
             <input type="hidden" value="<%= id_event %> " name="id_event">
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title" value="<%= event['title'] %> ">
+              <input type="text" class="form-control" id="title" name="title" value="<%= event['title'] %> " required>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input class="form-control" type="file" id="image" name="image" value="<%= event['image'] %> ">
+                <input class="form-control" type="file" id="image" name="image" value="<%= event['image'] %> " required>
             </div>
             <div class="mb-3">
               <label for="schedule" class="form-label">Schedule</label>
@@ -20,7 +20,7 @@
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="content" name="content" rows="3"><%= event['content'] %> </textarea>
+                <textarea class="form-control" id="content" name="content" rows="3" required><%= event['content'] %> </textarea>
             </div>
             <button type="submit" class="btn btn-primary d-block w-100">Submit</button>
           </form>

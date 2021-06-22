@@ -3,7 +3,8 @@ const { News } = require("../models");
 exports.renderPage = async (req, res) => {
 	try {
 		const news = await News.findAll();
-		res.render("pages/news", { title: "News", news });
+		const user = req.cookies.email;
+		res.render("pages/news", { title: "News", news, user });
 	} catch (error) {
 		console.log(error);
 	}
@@ -11,7 +12,8 @@ exports.renderPage = async (req, res) => {
 
 exports.postNewsPage = async (req, res) => {
 	try {
-		res.render("pages/news/postnews", { title: "News" });
+		const user = req.cookies.email;
+		res.render("pages/news/postnews", { title: "News", user });
 	} catch (error) {
 		console.log(error);
 	}
@@ -39,7 +41,8 @@ exports.editNewsPage = async (req, res) => {
 			},
 		});
 		const news = response[0];
-		res.render("pages/news/editnews", { title: "News", id_news, news });
+		const user = req.cookies.email;
+		res.render("pages/news/editnews", { title: "News", id_news, news, user });
 	} catch (error) {
 		console.log(error);
 	}

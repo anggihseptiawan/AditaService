@@ -3,14 +3,16 @@ const { Career } = require("../models");
 exports.renderPage = async (req, res) => {
 	try {
 		const careers = await Career.findAll();
-		res.render("pages/career", { title: "Career", careers });
+		const user = req.cookies.email;
+		res.render("pages/career", { title: "Career", careers, user });
 	} catch (error) {
 		console.log(error);
 	}
 };
 
 exports.postCareerPage = (req, res) => {
-	res.render("pages/career/postcareer", { title: "Career" });
+	const user = req.cookies.email;
+	res.render("pages/career/postcareer", { title: "Career", user });
 };
 
 exports.postCareer = async (req, res) => {
@@ -37,10 +39,12 @@ exports.editCareerPage = async (req, res) => {
 		},
 	});
 	const career = response[0];
+	const user = req.cookies.email;
 	res.render("pages/career/editcareer", {
 		title: "Career",
 		id_career,
 		career,
+		user,
 	});
 };
 
