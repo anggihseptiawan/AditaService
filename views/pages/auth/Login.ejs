@@ -41,15 +41,20 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
                                     </div>
+                                    <% if(alert.message != "") { %>
+                                        <div class="alert alert-<%= alert.status %>" role="alert">
+                                          <%= alert.message %>
+                                        </div>
+                                    <% } %>
                                     <form class="user" action="/admin/auth/handleLogin" method="POST">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." name="email">
+                                                placeholder="Enter Email Address..." name="email" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password" name="password">
+                                                id="exampleInputPassword" placeholder="Password" name="password" required>
                                         </div>
                                         <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -87,12 +92,6 @@
 <!-- Custom scripts for all pages-->
 <script src="../../../javascripts/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="../../../vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="../../../javascripts/demo/chart-area-demo.js"></script>
-<script src="../../../javascripts/demo/chart-pie-demo.js"></script>
 
 </body>
 

@@ -1,17 +1,18 @@
 const { Events } = require("../models");
-const cloudinary = require("cloudinary").v2;
 
 exports.renderPage = async (req, res) => {
 	try {
 		const events = await Events.findAll();
-		res.render("pages/events", { title: "Events", events });
+		const user = req.cookies.email;
+		res.render("pages/events", { title: "Events", events, user });
 	} catch (error) {
 		res.sendStatus(400).json(error);
 	}
 };
 
 exports.postEventsPage = (req, res) => {
-	res.render("pages/events/postevent", { title: "Events" });
+	const user = req.cookies.email;
+	res.render("pages/events/postevent", { title: "Events", user });
 };
 
 exports.editEventsPage = async (req, res) => {
@@ -23,10 +24,12 @@ exports.editEventsPage = async (req, res) => {
 			},
 		});
 		const event = response[0];
+		const user = req.cookies.email;
 		res.render("pages/events/editevent", {
 			title: "Events",
 			id_event,
 			event,
+			user,
 		});
 	} catch (error) {
 		console.log(error);

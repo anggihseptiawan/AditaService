@@ -6,11 +6,12 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 const adminRouter = require("./routes/admin");
 const indexRouter = require("./routes/index");
 
-// api route
+// api router
 const apiCareerRouter = require("./routes/api/career");
 const apiNewsRouter = require("./routes/api/news");
 const apiEventsRouter = require("./routes/api/events");
@@ -26,9 +27,10 @@ app.use(
 		secret: "keyboard cat",
 		resave: false,
 		saveUninitialized: true,
-		cookie: { secure: true, maxAge: 120000 },
+		cookie: { maxAge: 60000 },
 	})
 );
+app.use(flash());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
